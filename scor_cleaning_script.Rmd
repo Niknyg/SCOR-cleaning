@@ -120,7 +120,7 @@ scor8894 <- scor8894[(scor8894$validage =="Valid"),]
 scor8894$gingiv2 <- as.numeric(scor8894$gingiv2)
 scor8894$gingivitis <- ifelse(scor8894$gingiv2 > 5, 1, 0)
 scor8894$forstet5 <- as.numeric(scor8894$forstet5)
-scor8894$perio <- ifelse(scor8894$forstet5 > 0, 1, 0)
+scor8894$perio <- ifelse(scor8894$forstet5 > 5, 1, 0)
 
 #Making proxy variable for dmf_s, note that code 5 usually included today does not exist for this dataset, and thus cannot be included. In addition code everyone with n_surfaces larger than 148/88 as 0, as it is not possible to have more surfaces than that registered (given incisal edges noted as belonging to another surface when scoring)
 scor8894 <- scor8894 %>%  
@@ -221,7 +221,7 @@ scor95 <- scor95 %>%
   ungroup
 
 
-scor95$perio <- ifelse(scor95$FORSTET5 >0 & scor95$indberetningsaar < 1999 | scor95$pato_poch > 5 & scor95$indberetningsaar >= 1999, FLADE, 1, 0)
+scor95$perio <- ifelse(scor95$FORSTET5 >5 & scor95$indberetningsaar < 1999 | scor95$pato_poch > 5 & scor95$indberetningsaar >= 1999, FLADE, 1, 0)
 
 #Making proxy variable for dmf_s, note that code 5 usually included today does not exist for this dataset, and thus cannot be included. In addition code everyone with n_surfaces larger than 148/88 as 0, as it is not possible to have more surfaces than that registered (given incisal edges noted as belonging to another surface when scoring)
 
